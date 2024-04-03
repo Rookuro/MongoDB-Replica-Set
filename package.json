@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "name": "votre-projet",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "faker": "^5.5.3"
+  }
+}
