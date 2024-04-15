@@ -1,9 +1,11 @@
 {
   "type": "module",
-  "name": "votre-projet",
+  "name": "faker",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
-    "faker": "^5.5.3"
+    "faker": "^5.5.3",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.0"
   }
 }

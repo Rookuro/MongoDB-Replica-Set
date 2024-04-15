@@ -1,28 +1,28 @@
-version: '3'
+version: '3.7'
 
 services:
-  mongo1:
-    container_name: mongo1
-    image: mongo:5
-    command: mongod --replSet myReplicaSet --bind_ip localhost,mongo1
+  mongo_instance_1:
+    container_name: mongo_instance_1
+    image: mongo:latest
+    command: mongod --replSet myReplicaSet --bind_ip localhost,mongo_instance_1
     ports:
       - "27017:27017"
     networks:
       - mongoCluster
 
-  mongo2:
-    container_name: mongo2
-    image: mongo:5
-    command: mongod --replSet myReplicaSet --bind_ip localhost,mongo2
+  mongo_instance_2:
+    container_name: mongo_instance_2
+    image: mongo:latest
+    command: mongod --replSet myReplicaSet --bind_ip localhost,mongo_instance_2
     ports:
       - "27018:27017"
     networks:
       - mongoCluster
 
-  mongo3:
-    container_name: mongo3
-    image: mongo:5
-    command: mongod --replSet myReplicaSet --bind_ip localhost,mongo3
+  mongo_instance_3:
+    container_name: mongo_instance_3
+    image: mongo:latest
+    command: mongod --replSet myReplicaSet --bind_ip localhost,mongo_instance_3
     ports:
       - "27019:27017"
     networks:
