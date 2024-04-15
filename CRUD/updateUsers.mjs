@@ -16,30 +16,55 @@ async function run() {
 
     try {
   
-      // Get the database and collection on which to run the operation
-  
       const database = client.db("myReplicaSet");
   
-      const usersCollection = database.collection("usersCollection");    
+      const usersCollection = database.collection("usersCollection");
   
-      // Execute query 
+      // Create a filter for movies with the title "Random Harvest"
   
-      const cursor = usersCollection.find();
+      const filter = { name: "Alexis Giromagny" };
   
-      // Console log returned documents
+      /* Set the upsert option to insert a document if no documents match
   
-      for await (const doc of cursor) {
+      the filter */
   
-        console.log(doc);
   
-      }
+      // Specify the update to set a value for the plot field
+  
+      const updateDoc = {
+  
+        $set: {
+  
+          name: "Bernard Giromagny"
+  
+        },
+  
+      };
+  
+      // Update the first document that matches the filter
+  
+      const result = await usersCollection.updateOne(filter, updateDoc);
+  
+      
+  
+      // Print the number of matching and modified documents
+  
+      console.log(
+  
+        `${result.matchedCount} document(s) matched the filter, updated ${result.modifiedCount} document(s)`,
+  
+      );
   
     } finally {
+  
+      // Close the connection after the operation completes
   
       await client.close();
   
     }
   
   }
+  
+  // Run the program and print any thrown errors
   
   run().catch(console.dir);
