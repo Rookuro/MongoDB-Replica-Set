@@ -23,15 +23,7 @@ async function run() {
   
       // Execute query 
   
-      const cursor = usersCollection.find();
-  
-      // Print a message if no documents were found
-  
-      /*if ((await usersCollection.countDocuments(user)) === 0) {
-  
-        console.log("No documents found!");
-  
-      }*/
+      const cursor = usersCollection.find({name :"Alexis Giromagny"});
   
       // Console log returned documents
   
