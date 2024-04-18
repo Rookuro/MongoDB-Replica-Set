@@ -1,13 +1,10 @@
 import { MongoClient } from 'mongodb';
 
-
-const url = 'mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2';
-
-// Replace the uri string with your MongoDB deployment's connection string.
+// URI de connexion à la base de données.
 
 const uri = "mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.8.2";
 
-// Create a new client and connect to MongoDB
+// Créer un nouveau client en passant l'URI en paramètre
 
 const client = new MongoClient(uri);
 
@@ -16,7 +13,7 @@ async function run() {
 
     try {
   
-      // Connect to the "insertDB" database and access its "haiku" collection
+      // Connexion à "myReplicaSet" DB et la collection "usersCollection" 
   
       const database = client.db("myReplicaSet");
   
@@ -24,7 +21,7 @@ async function run() {
   
       
   
-      // Create a document to insert
+      // Object user qui stocker les informations du user
   
       const user = {
   
@@ -35,17 +32,17 @@ async function run() {
   
       }
   
-      // Insert the defined document into the "haiku" collection
+      // Insertion du contenu user
   
       const result = await usersCollection.insertOne(user);
   
-      // Print the ID of the inserted document
+      // On imprime l'ID de 
   
       console.log(`A document was inserted with the _id: ${result.insertedId}`);
   
     } finally {
   
-       // Close the MongoDB client connection
+       // Fermer la connexion mongoDB
   
       await client.close();
   
@@ -53,6 +50,6 @@ async function run() {
   
   }
   
-  // Run the function and handle any errors
+  // Run fonction et catch error
   
   run().catch(console.dir);
