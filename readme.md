@@ -263,6 +263,57 @@ Résultat :
 
 ### Exécution du script CRUD (JS)
 
+Script create :
+
+```shell
+const user = {
+      name: "Alexis Giromagny",
+      age: 26,
+      email: "alexis.giromagny13@gmail.com",
+      createdAt: "2023-11-24T08:46:21.163Z",
+    };
+
+    // Insertion du contenu user
+
+    const result = await usersCollection.insertOne(user);
+```
+
+Script delete :
+
+```shell
+const query = { name: "Alexis Giromagny" };
+
+    //On passe en paramètre la valeur query pour supprimer le user
+
+    const result = await usersCollection.deleteOne(query);
+```
+
+Script read :
+
+```shell
+const cursor = usersCollection.find({ name: "Alexis Giromagny" });
+```
+
+Script update :
+
+```shell
+const filter = { name: "Alexis Giromagny" };
+
+    // Spécifier le valeur à mettre à jour
+
+    const updateDoc = {
+      $set: {
+        name: "Bernard Giromagny",
+      },
+    };
+
+    // Mettre à jour
+
+    const result = await usersCollection.updateOne(filter, updateDoc);
+```
+
+
+
 
 
 
