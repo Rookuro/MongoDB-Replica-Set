@@ -5,18 +5,18 @@
 
 La première étape consiste à créer un réseau docker (Cluster) pour cela nous allons utiliser la commande ci-dessous.
 
-```http
+```shell
   docker network create mongoCluster
 ```
 Ensuite, pour la deuxième étape nous allons executer le docker compose pour démarrer les trois instances. 
 
-```http
+```shell
   docker compose up -d
 ```
 
 Enfin, nous allons exécuter la commande ci-dessous, dans le MongoDB Cli il faudra exécuter cette commande pour permettre de créer le jeu de réplica réel entre les différentes instances.
 
-```http
+```shell
   docker exec -it mongo_instance_1 mongosh --eval "rs.initiate({
  _id: \"myReplicaSet\",
  members: [
@@ -29,13 +29,13 @@ Enfin, nous allons exécuter la commande ci-dessous, dans le MongoDB Cli il faud
 
 Nous pouvons ensuite grâce à la commande suivante, voir les différentes instances, cela nous permettra de vérifier le replica sur les machines.
 
-```http
+```shell
 docker exec -it mongo_instance_1 mongosh --eval "rs.status()"
 ```
 
 Instance 1 :
 
-```http
+```shell
 {
       _id: 0,
       name: 'mongo_instance_1:27017',
@@ -62,7 +62,7 @@ Instance 1 :
 
 Instance 2 :
 
-```http
+```shell
 {
       _id: 1,
       name: 'mongo_instance_2:27017',
@@ -91,7 +91,7 @@ Instance 2 :
 
 Instance 3 :
 
-```http
+```shell
 {
       _id: 2,
       name: 'mongo_instance_3:27017',
@@ -119,7 +119,7 @@ Instance 3 :
 
 Par la suite, nous allons générer les fausses données utilisateurs et les stocker dans un fichier users.json avec la structure de données suivantes.
 
-```http
+```shell
  {
   _id: new ObjectId('661d0f6a9eac75371bab12d1'),
   name: 'Ms. Blanca Krajcik',
